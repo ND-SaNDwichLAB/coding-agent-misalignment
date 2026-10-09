@@ -1,0 +1,3 @@
+[submodule "specstory-scraper"]
+	path = specstory-scraper
+	url = https://github.com/TTangNingzhi/vibe-coding-scraper

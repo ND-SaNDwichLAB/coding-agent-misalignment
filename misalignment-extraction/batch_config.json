@@ -1,0 +1,14 @@
+{
+  "prompt_path": "extraction_prompt.md",
+  "batch_dir": "batch",
+  "input_glob": "workspace/*/session_formatted/*.txt",
+  "endpoint": "/v1/chat/completions",
+  "model": "gpt-5.4",
+  "response_format_path": "response_format.json",
+  "temperature": 0,
+  "price": {
+    "input": 1.25,
+    "cached_input": 0.125,
+    "output": 7.50
+  }
+}

@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Coding Agent Misalignment Atlas</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./styles.css" />
+</head>
+
+<body>
+  <div class="page-shell">
+    <header class="hero">
+      <div class="hero-footnote" aria-label="Paper and interface credits">
+        <p class="hero-footnote-credit">
+          Developed by
+          <a href="https://www.nztang.com/" target="_blank" rel="noreferrer">Ningzhi Tang</a>
+        </p>
+        <p class="hero-footnote-paper">
+          Read Paper:
+          <a href="https://arxiv.org/abs/2605.29442" target="_blank" rel="noreferrer">
+            How Coding Agents Fail Their Users (EMNLP 2026 Main)
+          </a>
+        </p>
+      </div>
+      <div class="hero-main">
+        <div class="hero-topline">
+          <p class="eyebrow">Cursor, GitHub Copilot, Claude Code & more</p>
+          <button id="licensed-only-toggle" type="button" class="hero-filter-button" aria-pressed="false">
+            Licensed only
+          </button>
+        </div>
+        <h1>Coding Agent Misalignment Atlas</h1>
+        <p class="hero-copy">
+          Structured analysis of developer-agent collaboration breakdowns, covering <b>instruction misalignment</b>
+          (agent didn't execute what was asked) and <b>intention misalignment</b> (agent misread developer intent,
+          evidenced by visible correction).
+        </p>
+        <section class="workflow-preview" aria-label="Three-step pipeline">
+          <p class="workflow-kicker">Three-Stage Pipeline</p>
+          <a class="workflow-inline-link" href="./prompt-viewer.html?doc=extraction">
+            <span class="workflow-step">1</span>
+            <span>Extraction</span>
+          </a>
+          <a class="workflow-inline-link" href="./prompt-viewer.html?doc=validation">
+            <span class="workflow-step">2</span>
+            <span>Validation</span>
+          </a>
+          <a class="workflow-inline-link" href="./prompt-viewer.html?doc=annotation">
+            <span class="workflow-step">3</span>
+            <span>Annotation</span>
+          </a>
+        </section>
+      </div>
+      <div class="hero-stats" id="hero-stats"></div>
+    </header>
+
+    <section class="toolbar-stack">
+      <section id="primary-toolbar" class="toolbar toolbar-primary toolbar-primary-valid">
+        <div class="toolbar-primary-fields">
+          <button id="sort-toggle-button" type="button" class="ghost-button sort-icon-button" aria-pressed="false"
+            aria-label="Random sort" title="Random sort">
+            <svg viewBox="0 0 24 24" aria-hidden="true">
+              <path
+                d="M16 7h3l-3-3m3 3-3 3M5 7h6c1.1 0 2.1.45 2.83 1.17L19 13m-3 4h3l-3 3m3-3-3-3M5 17h6c1.1 0 2.1-.45 2.83-1.17L16 13" />
+            </svg>
+          </button>
+
+          <label class="search-field">
+            <span>Search</span>
+            <input id="search-input" type="search" placeholder="Search titles..." />
+          </label>
+
+          <label>
+            <span>Dataset</span>
+            <select id="dataset-filter">
+              <option value="">All datasets</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Validation</span>
+            <select id="validation-filter">
+              <option value="">All validation labels</option>
+            </select>
+          </label>
+
+          <label id="invalid-category-filter-group">
+            <span>Invalid Category</span>
+            <select id="invalid-category-filter">
+              <option value="">All invalid categories</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Platform</span>
+            <select id="platform-filter">
+              <option value="">All platforms</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Agent</span>
+            <select id="agent-filter">
+              <option value="">All agents</option>
+            </select>
+          </label>
+
+          <label>
+            <span>Goal</span>
+            <select id="goal-filter">
+              <option value="">All goals</option>
+            </select>
+          </label>
+
+          <button id="reset-button" type="button" class="ghost-button compact-button" aria-label="Reset filters"
+            title="Reset filters">
+            Reset
+          </button>
+          <div class="toolbar-pagination">
+            <span>Page</span>
+            <form id="page-jump-form" class="pagination-controls" aria-label="Pagination">
+              <button id="page-prev-button" class="nav-button" type="button" aria-label="Previous page">
+                &#8249;
+              </button>
+              <label class="page-jump" for="page-jump-input">
+                <input id="page-jump-input" class="page-jump-input" type="number" min="1" inputmode="numeric" />
+                <span class="page-jump-total">/ <strong id="page-total">0</strong></span>
+              </label>
+              <button id="page-next-button" class="nav-button" type="button" aria-label="Next page">
+                &#8250;
+              </button>
+            </form>
+          </div>
+        </div>
+      </section>
+
+      <section id="annotation-toolbar" class="toolbar toolbar-secondary">
+        <label>
+          <span>Symptom</span>
+          <select id="symptom-filter">
+            <option value="">All symptom labels</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Cause</span>
+          <select id="cause-filter">
+            <option value="">All cause labels</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Evidence Tier</span>
+          <select id="evidence-tier-filter">
+            <option value="">All evidence tiers</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Damage Severity</span>
+          <select id="damage-severity-filter">
+            <option value="">All damage severities</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Damage Locus</span>
+          <select id="damage-locus-filter">
+            <option value="">All damage loci</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Resolution</span>
+          <select id="resolution-filter">
+            <option value="">All resolution labels</option>
+          </select>
+        </label>
+
+        <label>
+          <span>Resolver</span>
+          <select id="resolver-filter">
+            <option value="">All resolver labels</option>
+          </select>
+        </label>
+      </section>
+    </section>
+
+    <section class="summary-bar">
+      <div id="pagination-summary" class="result-summary"></div>
+      <div id="result-summary" class="result-summary"></div>
+      <div class="chip-row" id="active-filters"></div>
+    </section>
+
+    <main id="results" class="results" aria-live="polite"></main>
+
+    <footer class="site-footer">
+      <p>&copy; 2026 Ningzhi Tang. All rights reserved.</p>
+    </footer>
+  </div>
+
+  <template id="card-template">
+    <article class="card">
+      <div class="card-topline">
+        <div class="session-meta"></div>
+        <div class="tag-row"></div>
+      </div>
+      <div class="annotation-summary-slot"></div>
+      <h2 class="card-title"></h2>
+      <p class="card-description"></p>
+      <div class="detail-stack"></div>
+      <details class="evidence-block">
+        <summary></summary>
+        <div class="evidence-list"></div>
+      </details>
+    </article>
+  </template>
+
+  <script type="module" src="./app.js"></script>
+</body>
+
+</html>

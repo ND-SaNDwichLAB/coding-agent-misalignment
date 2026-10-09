@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Prompt Viewer</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500&display=swap"
+    rel="stylesheet" />
+  <link rel="stylesheet" href="./prompt-viewer.css" />
+</head>
+
+<body>
+  <div class="prompt-shell">
+    <header class="prompt-hero">
+      <a class="prompt-backlink" href="./index.html">
+        <svg class="prompt-backlink-icon" viewBox="0 0 20 20" aria-hidden="true">
+          <path d="M16 10H5m0 0 4-4m-4 4 4 4" />
+        </svg>
+        <span>Back to Atlas</span>
+      </a>
+      <div class="prompt-heading-row">
+        <span class="prompt-step-badge" id="prompt-step-badge">1</span>
+        <div>
+          <h1 id="prompt-title">Loading prompt…</h1>
+          <p id="prompt-subtitle" class="prompt-subtitle"></p>
+        </div>
+      </div>
+    </header>
+
+    <main class="prompt-content">
+      <article class="prompt-markdown" id="prompt-markdown">
+        <div class="prompt-empty">Loading markdown…</div>
+      </article>
+    </main>
+  </div>
+
+  <script type="module" src="./prompt-viewer.js"></script>
+</body>
+
+</html>

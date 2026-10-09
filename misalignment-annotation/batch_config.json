@@ -1,0 +1,21 @@
+{
+  "prompt_path": "annotation_prompt.md",
+  "batch_dir": "batch",
+  "input_mode": "json_records",
+  "input_path": "../misalignment-validation/validated_misalignments-all.json",
+  "prompt_fields": [
+    "name",
+    "description",
+    "evidence"
+  ],
+  "aggregate_output_path": "annotated_misalignments-all.json",
+  "endpoint": "/v1/chat/completions",
+  "model": "gpt-5.4",
+  "response_format_path": "response_format.json",
+  "temperature": 0,
+  "price": {
+    "input": 1.25,
+    "cached_input": 0.125,
+    "output": 7.5
+  }
+}

@@ -1,0 +1,81 @@
+{
+  "type": "json_schema",
+  "json_schema": {
+    "name": "misalignment_report",
+    "strict": true,
+    "schema": {
+      "type": "object",
+      "additionalProperties": false,
+      "properties": {
+        "misalignments": {
+          "type": "array",
+          "items": {
+            "type": "object",
+            "additionalProperties": false,
+            "properties": {
+              "id": {
+                "type": "string"
+              },
+              "name": {
+                "type": "string"
+              },
+              "description": {
+                "type": "string"
+              },
+              "alignment_goal": {
+                "type": "string",
+                "enum": [
+                  "instruction",
+                  "intention",
+                  "both"
+                ]
+              },
+              "evidence": {
+                "type": "array",
+                "items": {
+                  "type": "object",
+                  "additionalProperties": false,
+                  "properties": {
+                    "turn": {
+                      "type": "string"
+                    },
+                    "quote": {
+                      "type": "string"
+                    },
+                    "context": {
+                      "type": "string"
+                    }
+                  },
+                  "required": [
+                    "turn",
+                    "quote",
+                    "context"
+                  ]
+                }
+              },
+              "confidence": {
+                "type": "string",
+                "enum": [
+                  "high",
+                  "medium",
+                  "low"
+                ]
+              }
+            },
+            "required": [
+              "id",
+              "name",
+              "description",
+              "alignment_goal",
+              "evidence",
+              "confidence"
+            ]
+          }
+        }
+      },
+      "required": [
+        "misalignments"
+      ]
+    }
+  }
+}

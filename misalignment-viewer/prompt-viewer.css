@@ -1,0 +1,251 @@
+:root {
+  color-scheme: light;
+  --bg: #fbf8f1;
+  --bg-accent: #f6eee0;
+  --surface: rgba(255, 253, 249, 0.94);
+  --surface-strong: #fffdfa;
+  --border: rgba(109, 84, 52, 0.11);
+  --text: #24170d;
+  --muted: #806a53;
+  --accent: #bb6b47;
+  --accent-deep: #965032;
+  --shadow: 0 18px 40px rgba(109, 84, 52, 0.06);
+  --mono: "IBM Plex Mono", monospace;
+  --sans: "Manrope", sans-serif;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html,
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: rgb(236, 232, 220);
+  color: var(--text);
+  font-family: var(--sans);
+}
+
+body {
+  padding: 24px;
+}
+
+.prompt-shell {
+  width: min(1240px, 100%);
+  margin: 0 auto;
+}
+
+.prompt-hero,
+.prompt-content {
+  border: 1px solid var(--border);
+  border-radius: 28px;
+  background: rgb(255, 253, 251);
+  box-shadow: var(--shadow);
+}
+
+.prompt-hero {
+  display: grid;
+  gap: 14px;
+  padding: 26px 28px;
+}
+
+.prompt-content {
+  margin-top: 18px;
+  padding: 24px 28px 30px;
+}
+
+.prompt-backlink {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  justify-self: start;
+  padding: 8px 12px;
+  border-radius: 999px;
+  background: rgba(255, 254, 250, 0.9);
+  border: 1px solid rgba(73, 52, 26, 0.12);
+  color: var(--accent-deep);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-decoration: none;
+  text-transform: uppercase;
+}
+
+.prompt-backlink-icon {
+  width: 15px;
+  height: 15px;
+  flex: 0 0 15px;
+  fill: none;
+  stroke: currentColor;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+
+.prompt-kicker {
+  margin: 0;
+  color: var(--accent-deep);
+  font-family: var(--mono);
+  font-size: 0.76rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+.prompt-heading-row {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 16px;
+  align-items: start;
+}
+
+.prompt-step-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  background: rgba(187, 107, 71, 0.12);
+  color: var(--accent-deep);
+  font-family: var(--mono);
+  font-size: 1.25rem;
+  font-weight: 500;
+}
+
+.prompt-hero h1 {
+  margin: 0;
+  color: #342418;
+  font-size: clamp(1.4rem, 2.6vw, 2.2rem);
+  line-height: 1.02;
+  letter-spacing: -0.04em;
+}
+
+.prompt-subtitle {
+  margin: 10px 0 0;
+  max-width: 50rem;
+  color: var(--muted);
+  line-height: 1.65;
+}
+
+.prompt-empty {
+  padding: 28px 24px;
+  border: 1px dashed rgba(73, 52, 26, 0.18);
+  border-radius: 18px;
+  color: var(--muted);
+  text-align: center;
+}
+
+.prompt-markdown {
+  line-height: 1.72;
+}
+
+.prompt-markdown> :first-child {
+  margin-top: 0;
+}
+
+.prompt-markdown h1,
+.prompt-markdown h2,
+.prompt-markdown h3 {
+  margin: 1.9em 0 0.55em;
+  line-height: 1.2;
+}
+
+.prompt-markdown h1 {
+  font-size: 1.9rem;
+  letter-spacing: -0.04em;
+}
+
+.prompt-markdown h2 {
+  font-size: 1.28rem;
+}
+
+.prompt-markdown h3 {
+  font-size: 1.05rem;
+}
+
+.prompt-markdown p {
+  margin: 0 0 1em;
+  color: #38291d;
+}
+
+.prompt-markdown ul,
+.prompt-markdown ol {
+  margin: 0 0 1.1em;
+  padding-left: 1.35rem;
+}
+
+.prompt-markdown li+li {
+  margin-top: 0.45em;
+}
+
+.prompt-markdown hr {
+  margin: 1.7em 0;
+  border: 0;
+  border-top: 1px solid rgba(73, 52, 26, 0.12);
+}
+
+.prompt-markdown blockquote {
+  margin: 1.1em 0;
+  padding: 0.1em 0 0.1em 1rem;
+  border-left: 3px solid rgba(187, 107, 71, 0.28);
+  color: #5f4935;
+}
+
+.prompt-markdown blockquote p:last-child {
+  margin-bottom: 0;
+}
+
+.prompt-markdown pre {
+  overflow-x: auto;
+  margin: 1.2em 0;
+  padding: 16px 18px;
+  border: 1px solid rgba(73, 52, 26, 0.1);
+  border-radius: 18px;
+  background: rgba(247, 242, 234, 0.94);
+}
+
+.prompt-markdown code {
+  padding: 0.14em 0.38em;
+  border-radius: 8px;
+  background: rgba(73, 52, 26, 0.08);
+  font-family: var(--mono);
+  font-size: 0.92em;
+}
+
+.prompt-markdown pre code {
+  padding: 0;
+  background: transparent;
+  font-size: 0.88rem;
+}
+
+.prompt-markdown strong {
+  color: #26180d;
+}
+
+.prompt-markdown em {
+  color: #5b4632;
+}
+
+@media (max-width: 720px) {
+  body {
+    padding: 14px;
+  }
+
+  .prompt-hero,
+  .prompt-content {
+    padding: 18px;
+    border-radius: 22px;
+  }
+
+  .prompt-heading-row {
+    grid-template-columns: 1fr;
+  }
+
+  .prompt-step-badge {
+    width: 42px;
+    height: 42px;
+  }
+}
